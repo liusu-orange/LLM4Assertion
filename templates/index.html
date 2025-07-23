@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verilog 断言生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verilog 断言生成器</h1>
+        <p>输入 Verilog 代码，生成对应的 SystemVerilog 断言：</p>
+        
+        <textarea id="code" placeholder="粘贴你的 Verilog 代码..."></textarea>
+        <button onclick="generateAssertions()">生成断言</button>
+        
+        <h2>生成的断言：</h2>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        async function generateAssertions() {
+            const code = document.getElementById("code").value;
+            const responseDiv = document.getElementById("response");
+            
+            if (!code) {
+                responseDiv.innerText = "请输入 Verilog 代码！";
+                return;
+            }
+
+            responseDiv.innerText = "生成中...";
+
+            try {
+                const response = await fetch("/generate", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        Code: code,
+                        Synchronous: "False",  // 默认值
+                        Clock: null            // 可选字段
+                    }),
+                });
+
+                const data = await response.json();
+                responseDiv.innerText = data.Assertions || "无返回内容";
+            } catch (error) {
+                responseDiv.innerText = `错误: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
