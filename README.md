@@ -1,4 +1,4 @@
-# Verilog Assertion Training & Inference a
+# Verilog Assertion Training & Inference 
 
 This project is designed for training and inference using Verilog code assertion pairs. It includes scripts for fine-tuning models and a local server for deployment.
 
