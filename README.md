@@ -1,8 +1,10 @@
-# Verilog Assertion Training and Inference
+# Verilog Assertion Training & Inference
 
 This project is designed for training and inference using Verilog code assertion pairs. It includes scripts for fine-tuning models and a local server for deployment.
 
-## Installation
+---
+
+## 📦 Installation
 
 Install the required packages using the following commands:
 
@@ -20,23 +22,44 @@ pip install fastapi
 Dataset
 The dataset (vert.xlsx) contains 20,000 Verilog code assertion pairs.
 
-Usage
-Training and Inference
+---
+
+## 🚀 Usage
+
+### Training and Inference
+
 Run the following script to start training and inference:
+
+```bash
 python sft.py
+```
 
-Local Server
+### Local Server
+
 Start the local server with the following command:
+
+```bash
 uvicorn app:app --reload --host 0.0.0.0 --port 8000
+```
 
-Frontend
-The frontend code is located in the template directory (index.html).
+---
 
-Project Structure
-vert.xlsx: Dataset file.
-sft.py: Script for training and inference.
-app.py: Script to start the local server.
-template/: Directory containing frontend code (index.html).
-Notes
-Ensure all dependencies are installed before running the scripts.
-The server supports hot-reloading for development purposes.
+## 🖥️ Frontend
+
+The frontend code is located in the `template` directory (`index.html`).
+
+---
+
+## 📁 Project Structure
+
+- `vert.xlsx`: Dataset file
+- `sft.py`: Script for training and inference
+- `app.py`: Script to start the local server
+- `template/`: Directory containing frontend code (`index.html`)
+
+---
+
+## ⚠️ Notes
+
+- Ensure all dependencies are installed before running the scripts.
+
